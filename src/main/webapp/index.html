@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion UE - API REST</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; line-height: 1.6; }
+        code { background: #eee; padding: 2px 6px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+<h1>Gestion UE &ndash; Service web RESTful</h1>
+<p>Le serveur fonctionne. L'API se trouve sous <code>rest/</code> :</p>
+<ul>
+    <li><a href="rest/options">GET rest/options</a> &ndash; liste des options</li>
+    <li><a href="rest/options?domaine=Math%C3%A9matiques">GET rest/options?domaine=Mathématiques</a></li>
+    <li><a href="rest/options/1">GET rest/options/1</a></li>
+    <li><a href="rest/etudiants">GET rest/etudiants</a> &ndash; liste des étudiants</li>
+    <li><a href="rest/etudiants/I001">GET rest/etudiants/I001</a></li>
+    <li><a href="rest/etudiants/option?codeOption=1">GET rest/etudiants/option?codeOption=1</a> (XML)</li>
+</ul>
+<p>Les liens ci-dessus ne testent que les requêtes <b>GET</b>. Pour POST / PUT / DELETE, utilisez Postman.</p>
+</body>
+</html>

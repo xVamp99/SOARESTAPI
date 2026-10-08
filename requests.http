@@ -1,0 +1,108 @@
+### Client HTTP integre a IntelliJ (alternative a Postman)
+### Cliquez sur la fleche verte a gauche de chaque requete.
+### Adaptez la variable si le nom de votre deploiement est different.
+@baseUrl = http://localhost:8080/Gestion_UE_VF_war_exploded/rest
+
+### ===================== OPTIONS =====================
+
+### A1 - Creer une option
+POST {{baseUrl}}/options
+Content-Type: application/json
+
+{
+  "codeOption": 6,
+  "libelle": "Biologie",
+  "domaine": "Biologie",
+  "responsable": "Mme Responsable Biologie",
+  "credits": 20,
+  "semestre": 2,
+  "capacite": 20
+}
+
+### A2 - Liste de toutes les options
+GET {{baseUrl}}/options
+Accept: application/json
+
+### A3 - Options d'un domaine
+GET {{baseUrl}}/options?domaine=Mathématiques
+Accept: application/json
+
+### A4 - Supprimer l'option 2 (204, puis 404 si on rejoue)
+DELETE {{baseUrl}}/options/2
+
+### A5 - Modifier l'option 1
+PUT {{baseUrl}}/options/1
+Content-Type: application/json
+
+{
+  "codeOption": 1,
+  "libelle": "Informatique",
+  "domaine": "Informatique",
+  "responsable": "M. Nouveau Responsable Informatique",
+  "credits": 30,
+  "semestre": 1,
+  "capacite": 35
+}
+
+### A6 - Une option par son code
+GET {{baseUrl}}/options/1
+Accept: application/json
+
+### ===================== ETUDIANTS =====================
+
+### B1 - Creer un etudiant
+POST {{baseUrl}}/etudiants
+Content-Type: application/json
+
+{
+  "identifiant": "I0010",
+  "nom": "Etudiant 1",
+  "prenom": "Etudiant 1",
+  "option": {
+    "codeOption": 1,
+    "libelle": "Informatique",
+    "domaine": "Informatique",
+    "responsable": "M. Responsable Informatique",
+    "credits": 30,
+    "semestre": 1,
+    "capacite": 30
+  },
+  "anneeEtude": 2023,
+  "email": "etudiant1@example.com"
+}
+
+### B2 - Liste de tous les etudiants
+GET {{baseUrl}}/etudiants
+Accept: application/json
+
+### B3 - Un etudiant par identifiant
+GET {{baseUrl}}/etudiants/I001
+Accept: application/json
+
+### B4 - Supprimer un etudiant
+DELETE {{baseUrl}}/etudiants/I003
+
+### B5 - Modifier un etudiant
+PUT {{baseUrl}}/etudiants/I001
+Content-Type: application/json
+
+{
+  "identifiant": "I001",
+  "nom": "Etudiant 5",
+  "prenom": "Etudiant 5",
+  "option": {
+    "codeOption": 1,
+    "libelle": "Informatique",
+    "domaine": "Informatique",
+    "responsable": "M. Responsable Informatique",
+    "credits": 30,
+    "semestre": 1,
+    "capacite": 30
+  },
+  "anneeEtude": 2023,
+  "email": "etudiant5@example.com"
+}
+
+### B6 - Etudiants d'une option (reponse en XML)
+GET {{baseUrl}}/etudiants/option?codeOption=1
+Accept: application/xml

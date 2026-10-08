@@ -1,0 +1,321 @@
+{
+  "info": {
+    "name": "Atelier REST - Gestion UE",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/Gestion_UE_VF_war_exploded/rest"
+    }
+  ],
+  "item": [
+    {
+      "name": "A. Ressource Option",
+      "item": [
+        {
+          "name": "A1 - Créer une option",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/options",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "options"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codeOption\": 6,\n  \"libelle\": \"Biologie\",\n  \"domaine\": \"Biologie\",\n  \"responsable\": \"Mme Responsable Biologie\",\n  \"credits\": 20,\n  \"semestre\": 2,\n  \"capacite\": 20\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - Liste de toutes les options",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/options",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "options"
+              ]
+            }
+          }
+        },
+        {
+          "name": "A3 - Options d'un domaine",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/options?domaine=Mathématiques",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "options"
+              ],
+              "query": [
+                {
+                  "key": "domaine",
+                  "value": "Mathématiques"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "A4 - Supprimer l'option 2",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/options/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "options",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "A5 - Modifier l'option 1",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/options/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "options",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codeOption\": 1,\n  \"libelle\": \"Informatique\",\n  \"domaine\": \"Informatique\",\n  \"responsable\": \"M. Nouveau Responsable Informatique\",\n  \"credits\": 30,\n  \"semestre\": 1,\n  \"capacite\": 35\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A6 - Option par code",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/options/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "options",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "B. Ressource Etudiant",
+      "item": [
+        {
+          "name": "B1 - Créer un étudiant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/etudiants",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "etudiants"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifiant\": \"I0010\",\n  \"nom\": \"Etudiant 1\",\n  \"prenom\": \"Etudiant 1\",\n  \"option\": {\n    \"codeOption\": 1,\n    \"libelle\": \"Informatique\",\n    \"domaine\": \"Informatique\",\n    \"responsable\": \"M. Responsable Informatique\",\n    \"credits\": 30,\n    \"semestre\": 1,\n    \"capacite\": 30\n  },\n  \"anneeEtude\": 2023,\n  \"email\": \"etudiant1@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "B2 - Liste de tous les étudiants",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/etudiants",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "etudiants"
+              ]
+            }
+          }
+        },
+        {
+          "name": "B3 - Étudiant par identifiant",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/etudiants/I001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "etudiants",
+                "I001"
+              ]
+            }
+          }
+        },
+        {
+          "name": "B4 - Supprimer un étudiant",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/etudiants/I003",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "etudiants",
+                "I003"
+              ]
+            }
+          }
+        },
+        {
+          "name": "B5 - Modifier un étudiant",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/etudiants/I001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "etudiants",
+                "I001"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifiant\": \"I001\",\n  \"nom\": \"Etudiant 5\",\n  \"prenom\": \"Etudiant 5\",\n  \"option\": {\n    \"codeOption\": 1,\n    \"libelle\": \"Informatique\",\n    \"domaine\": \"Informatique\",\n    \"responsable\": \"M. Responsable Informatique\",\n    \"credits\": 30,\n    \"semestre\": 1,\n    \"capacite\": 30\n  },\n  \"anneeEtude\": 2023,\n  \"email\": \"etudiant5@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "B6 - Étudiants d'une option (XML)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/etudiants/option?codeOption=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "etudiants",
+                "option"
+              ],
+              "query": [
+                {
+                  "key": "codeOption",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
